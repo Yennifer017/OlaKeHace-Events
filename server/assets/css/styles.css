@@ -1,0 +1,188 @@
+/* Estilos generales */
+:root {
+    --primary: #00388b;   
+    --secondary: #2677F0; 
+    --third: #2435F0;
+    --fouth: #5726F0;
+    --color-background: #D7E2F2;      
+    --color-text-primary: #ffffff;  
+    --color-text-secondary: #000000;    
+    --color-acent: #26F0E9;     
+}
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    margin-bottom: 75px;
+    padding: 0;
+    background-color: var(--color-background); /* Fondo oscuro */
+    color: var(--color-text-primary); 
+}
+h1{
+    color: var(--secondary);
+    text-align: center;
+    font-size: 4rem;
+}
+
+/******************************************************************
+************************* Header **********************************
+*******************************************************************/
+header {
+    position: sticky;
+    top: 0px; /* Se pega a 10px desde la parte superior */
+    background-color: var(--primary);
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0 20px;
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+    color: var(--color-acent); 
+}
+
+/* Hero section */
+.hero {
+    background-color: var(--color-background);
+    padding: 2rem 0px;
+    text-align: center;
+}
+
+
+.hero h1 {
+    font-size: 5rem;
+    color:var(--fouth);
+}
+
+.hero h3{
+    color: var(--color-text-secondary);
+    font-size: 2rem;
+}
+
+.big-img{
+    width: 95%;
+}
+
+/************************************************************************************
+************************************* Footer ****************************************
+*************************************************************************************/
+footer {
+    background-color: var(--primary);
+    padding: 4px 0;
+    text-align: center;
+    position: fixed;    
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+}
+
+/* Estilos para formularios */
+form {
+    background-color: var(--color-background); 
+    padding: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: var(--third);
+    border-width: 10px;
+    width: 500px;
+    margin: 20px auto;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 80%; /* Ajusta a todo el ancho de la pantalla */
+        padding: 15px; /* Reduce el padding */
+        border-width: 5px; /* Borde más fino */
+    }
+}
+
+form label {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block;
+    color: var(--color-text-secondary); /* Azul elegante */
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+form input[type="number"],
+form input[type="url"],
+form input[type="tel"],
+form input[type="file"],
+form textarea,
+form select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 3px solid var(--secondary); 
+    border-radius: 5px;
+    background-color: var(--color-background); /* Fondo oscuro de los inputs */
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+
+form input[type="radio"],
+form input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+form input[type="submit"],
+form input[type="button"],
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--secondary); /* Azul para los botones */
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover,
+form input[type="button"]:hover,
+form button:hover {
+    background-color: #0077cc; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Estilo para selects */
+form select {
+    appearance: none;
+    background-color: #222;
+    color: #fff;
+    padding-right: 20px;
+}
+
+/* Estilo para las opciones en los selects */
+form option {
+    background-color: #333;
+}
+
+/* Estilo para el área de texto */
+form textarea {
+    height: 100px;
+    resize: none;
+}
