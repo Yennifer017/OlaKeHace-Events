@@ -38,12 +38,10 @@
     <input type="password" id="confirm_password" name="confirm_password" required>
     <br><br>
 
-    <!-- Fecha de nacimiento -->
     <label for="dob">Fecha de nacimiento:</label>
     <input type="date" id="dob" name="dob" required>
     <br><br>
 
-    <!-- Botón de envío -->
     <input type="submit" value="Registrarse">
 </form>
 

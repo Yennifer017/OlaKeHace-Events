@@ -139,7 +139,7 @@ form select {
     margin-bottom: 15px;
     border: 3px solid var(--secondary); 
     border-radius: 5px;
-    background-color: var(--color-background); /* Fondo oscuro de los inputs */
+    background-color: var(--color-background);
     color: var(--color-text-secondary);
     font-size: 1rem;
 }
@@ -154,7 +154,7 @@ form input[type="button"],
 form button {
     width: 100%;
     padding: 10px;
-    background-color: var(--secondary); /* Azul para los botones */
+    background-color: var(--secondary);
     border: none;
     color: white;
     font-size: 1rem;
@@ -165,7 +165,7 @@ form button {
 form input[type="submit"]:hover,
 form input[type="button"]:hover,
 form button:hover {
-    background-color: #0077cc; /* Azul más oscuro al pasar el ratón */
+    background-color: #0077cc;
 }
 
 /* Estilo para selects */
@@ -185,4 +185,7 @@ form option {
 form textarea {
     height: 100px;
     resize: none;
+}
+form a {
+    color: var(--fouth);
 }
