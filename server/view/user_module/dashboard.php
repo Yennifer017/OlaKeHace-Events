@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
-    <h1>Dashboard del Publicador</h1>
-    
+    <h1>Dashboard</h1>
 </body>
 </html>

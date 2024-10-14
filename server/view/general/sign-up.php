@@ -12,7 +12,27 @@
 
 <h1>Registro</h1>
 
-<form action="registrar.php" method="post">
+<?php
+if (isset($_GET['e'])) {
+    $error = $_GET['e'];
+    switch ($error) {
+        case 'p':
+            echo '<p class="error">Las contrasenas no son iguales<p>';
+            break;
+        case 'd':
+            echo '<p class="error">El formato de datos ingresado es invalido<p>';
+            break;
+        case 'db':
+            echo '<p class="error">El username o el correo electronico ya estan en uso<p>';
+            break;
+        case 'e':
+            echo '<p class="error">Ocurrio un error inesperado, intentalo de nuevo mas tarde<p>';
+            break;
+    }
+}
+?>
+
+<form action="../../controllator/services/viewer/createAccount.php" method="post">
 
     <label for="name">Nombre:</label>
     <input type="text" id="name" name="name" required>

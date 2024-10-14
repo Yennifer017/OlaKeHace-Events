@@ -6,7 +6,8 @@
                 ( strlen($publicator->getUsername()) >= 8 ) && ( strlen($publicator->getUsername()) <= 16 )
             && !empty($publicator->getPassword()) && 
                 ( strlen($publicator->getPassword()) >= 8 ) && ( strlen($publicator->getPassword()) <= 8 )
-            && filter_var($publicator->getEmail(), FILTER_VALIDATE_EMAIL);
+            && !empty($publicator->getEmail()) &&
+                filter_var($publicator->getEmail(), FILTER_VALIDATE_EMAIL);
     }
 
     public function validateViewer(Viewer $viewer){
@@ -17,6 +18,7 @@
             && !empty($viewer->getPassword()) && 
                 ( strlen($viewer->getPassword()) >= 8 ) && ( strlen($viewer->getPassword()) <= 16 )
             && !empty($viewer->getBirthday)
-            && filter_var($viewer->getEmail(), FILTER_VALIDATE_EMAIL);
+            && !empty($viewer->getEmail()) 
+                && filter_var($viewer->getEmail(), FILTER_VALIDATE_EMAIL);
     }
 }

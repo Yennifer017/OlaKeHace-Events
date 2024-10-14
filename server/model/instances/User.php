@@ -1,5 +1,4 @@
 <?php
-
 class User {
     public const PUBLICATOR_ROL = 'PUBLICATOR';
     public const VIEWER_ROL = 'VIEWER';
@@ -14,13 +13,16 @@ class User {
     protected $lastname;
     protected $email;
 
-    public function __construct($id, $username, $password, $rol, $firstname, $lastname) {
+    public function __construct(
+        $id = -1, $username = '', $password = '', $rol = '', $firstname = '', $lastname = '', $email = ''
+    ) {
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->rol = $rol;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
+        $this->email = $email;
     }
 
     public function getId() {

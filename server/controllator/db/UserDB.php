@@ -11,7 +11,7 @@
             $sql = 'CALL insert_publicator(:username, :password, :email, :firstname, :lastname);';
 
             $stmt = $conn->prepare($sql);
-            $stmt->blindValue(':username', $publicator->getUsername());
+            $stmt->bindValue(':username', $publicator->getUsername());
             $stmt->bindValue(':password', $publicator->getPassword());
             $stmt->bindValue(':email', $publicator->getEmail());
             $stmt->bindValue(':firstname', $publicator->getFirstname());
@@ -40,12 +40,12 @@
             $sql = 'CALL insert_viewer(:username, :password, :email, :firstname, :lastname, :birthday);';
 
             $stmt = $conn->prepare($sql);
-            $stmt->blindValue(':username', $viewer->getUsername());
+            $stmt->bindValue(':username', $viewer->getUsername());
             $stmt->bindValue(':password', $viewer->getPassword());
             $stmt->bindValue(':email', $viewer->getEmail());
             $stmt->bindValue(':firstname', $viewer->getFirstname());
             $stmt->bindValue(':lastname', $viewer->getLastname());
-            $stmt->blindValue(':birthday', $viewer->getBirthday());
+            $stmt->bindValue(':birthday', $viewer->getBirthday());
             
             if ($stmt->execute()) {
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);

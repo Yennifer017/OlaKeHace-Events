@@ -5,30 +5,9 @@ class Session {
     private const SEPARATOR = ',';
     public const USERNAME_COOKIE_NAME = "username";
 
-    public function setSimpleSessionCookie(Worker $worker){
+    public function setSessionCookie(User $user){
         $random = rand(0, 10000);
-        $cookie = $worker->getId() . Session::SEPARATOR . $worker->getRol() . Session::SEPARATOR . $random;
-        $cookie = $this->makeup_data($cookie);
-        $this->set_cookie(Session::SESSION_COOKIE_NAME, $cookie);
-    }
-
-    public function setSessionCookie(Assigned $assigned){
-        $random = rand(0, 10000);
-        $cookie = $assigned->getId() . Session::SEPARATOR 
-            . $assigned->getRol() . Session::SEPARATOR 
-            . $assigned->getIdSucursal() . Session::SEPARATOR 
-            . $random;
-        $cookie = $this->makeup_data($cookie);
-        $this->set_cookie(Session::SESSION_COOKIE_NAME, $cookie);
-    }
-
-    public function setAllSessionCookie(Salesperson $worker){
-        $random = rand(0, 10000);
-        $cookie = $worker->getId() . Session::SEPARATOR 
-            . $worker->getRol() . Session::SEPARATOR 
-            . $worker->getIdSucursal() . Session::SEPARATOR 
-            . $worker->getNoCheckout() . Session::SEPARATOR 
-            . $random;
+        $cookie = $user->getId() . Session::SEPARATOR . $user->getRol() . Session::SEPARATOR . $random;
         $cookie = $this->makeup_data($cookie);
         $this->set_cookie(Session::SESSION_COOKIE_NAME, $cookie);
     }
@@ -57,6 +36,7 @@ class Session {
             $data = openssl_decrypt($encrypted, $method, $key, 0, $iv); // Descifrar los datos
             try {
                 $array = explode(Session::SEPARATOR, $data);
+                
                 switch (count($array)) {
                     case 3:
                         return new Worker(null, null, $array[0], $array[1]);

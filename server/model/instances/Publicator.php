@@ -12,12 +12,13 @@ class Publicator extends User{
         $password, 
         $firstname, 
         $lastname, 
+        $email,
         $statusAccount = 'ACTIVE', 
         $automaticPubs = false, 
         $countAproved = 0
     ) {
         parent::__construct($id, $username, $password, 
-            User::PUBLICATOR_ROL, $firstname, $lastname);
+            User::PUBLICATOR_ROL, $firstname, $lastname, $email);
         $this->statusAccount = $statusAccount;
         $this->automaticPubs = $automaticPubs;
         $this->countAproved = $countAproved;

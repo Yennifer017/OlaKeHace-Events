@@ -3,11 +3,19 @@
 class Viewer extends User {
 
     private $birthday;
-    private $typePublic;
 
-    public function __construct($birthday, $typePublic) {
+    public function __construct(
+        $id, 
+        $username, 
+        $password, 
+        $firstname, 
+        $lastname,
+        $email, 
+        $birthday
+    ) {
+        parent::__construct($id, $username, $password, 
+            User::VIEWER_ROL, $firstname, $lastname, $email);
         $this->birthday = $birthday;
-        $this->typePublic = $typePublic;
     }
 
     // getters
@@ -15,16 +23,9 @@ class Viewer extends User {
         return $this->birthday;
     }
 
-    public function getTypePublic() {
-        return $this->typePublic;
-    }
-
     // setters
     public function setBirthday($birthday) {
         $this->birthday = $birthday;
     }
 
-    public function setTypePublic($typePublic) {
-        $this->typePublic = $typePublic;
-    }
 }
