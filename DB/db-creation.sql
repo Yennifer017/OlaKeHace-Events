@@ -12,7 +12,7 @@ CREATE TABLE param(
 );
 CREATE TABLE user(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(16) NOT NULL,
+    username VARCHAR(16) NOT NULL UNIQUE,
     password VARCHAR(64) NOT NULL,
     email VARCHAR(30) NOT NULL UNIQUE,
     rol ENUM('ADMIN', 'VIEWER', 'PUBLICATOR') NOT NULL,
@@ -49,11 +49,11 @@ CREATE TABLE publication(
     date DATE NOT NULL,
     hour TIME NOT NULL, 
     cupo INTEGER NOT NULL CHECK (cupo > 0),
-    type_public ENUM('CHILDREN', 'TEEN', 'YOUNG_ADULT','ADULT','OLDS'),
-    details VARCHAR(150),
-    url VARCHAR(60) NOT NULL,
+    type_public ENUM('CHILDREN', 'TEEN', 'YOUNG_ADULT','ADULT','OLDS') NOT NULL,
+    details VARCHAR(150) NOT NULL,
+    url VARCHAR(60),
     name VARCHAR(25) NOT NULL,
-    aprobed BOOLEAN NOT NULL,
+    aprobed BOOLEAN NOT NULL DEFAULT FALSE,
     banned BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY(id_publicator) REFERENCES publicator(id_user)
 );

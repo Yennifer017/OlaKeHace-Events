@@ -17,7 +17,7 @@
                 ( strlen($viewer->getUsername()) >= 8 ) && ( strlen($viewer->getUsername()) <= 16 )
             && !empty($viewer->getPassword()) && 
                 ( strlen($viewer->getPassword()) >= 8 ) && ( strlen($viewer->getPassword()) <= 16 )
-            && !empty($viewer->getBirthday)
+            && !empty($viewer->getBirthday())
             && !empty($viewer->getEmail()) 
                 && filter_var($viewer->getEmail(), FILTER_VALIDATE_EMAIL);
     }

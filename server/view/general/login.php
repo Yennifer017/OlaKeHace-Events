@@ -12,10 +12,9 @@
 
 <h1>Ingresar</h1>
 
-<form action="registrar.php" method="post">
-
-    <label for="name">Username:</label>
-    <input type="text" id="name" name="name" required>
+<form action="../../controllator/services/general/loginService.php" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
     <br><br>
 
     <label for="password">Contraseña:</label>

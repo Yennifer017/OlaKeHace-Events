@@ -41,13 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         );
         $session = new Session();
         $session->setSessionCookie($viewer);
-        header("Location: ../../../view./user_module/dashboard.php");
+        header("Location: ../../../view/user_module/dashboard.php");
         exit();
     } catch (InvalidDataFormatEx | InvalidDataEx $e) {
-        echo $e->getMessage();
-        echo "name: $name, username:$username, pass:$password, lastname:$lastname, email:$email, birtday:$birthday";
-        //header("Location: $url?e=d");
-        //exit();
+        header("Location: $url?e=d");
+        exit();
     } catch (PDOException $e){
         header("Location: $url?e=db");
         exit();
