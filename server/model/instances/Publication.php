@@ -13,20 +13,20 @@ class Publication {
     private $name;
     private bool $approved;
     private bool $banned;  
-    private Category $category;
+    private ?Category $category;
 
     // Constructor
     public function __construct(
-        $id,
-        $region,
-        $place,
-        $date,
-        $hour,
-        $cupo,
-        $typePublic,
-        $details,
-        $url,
-        $name,
+        $id = -1,
+        $region = '',
+        $place = '',
+        $date = '',
+        $hour = '',
+        $cupo = -1,
+        $typePublic = '',
+        $details = '',
+        $url = '',
+        $name = '',
         Category $category = null,
         $approved = false,
         $banned = false

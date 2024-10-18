@@ -59,10 +59,10 @@ CREATE TABLE publication(
 );
 
 CREATE TABLE report(
-    id INTEGER PRIMARY KEY,
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
     id_publication INTEGER NOT NULL, 
-    status ENUM('PENDING', 'APPROVED', 'DENIED'),
-    reason ENUM('INAPPROPRIATE', 'FAKE', 'SPAM', 'FRAUD', 'HATE', 'ILLEGAL'),
+    status ENUM('PENDING', 'APPROVED', 'DENIED') NOT NULL,
+    reason ENUM('INAPPROPRIATE', 'FAKE', 'SPAM', 'FRAUD', 'HATE', 'ILLEGAL') NOT NULL,
     details VARCHAR(200),
     FOREIGN KEY(id_publication) REFERENCES publication(id)
 );

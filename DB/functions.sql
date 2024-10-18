@@ -48,5 +48,43 @@ END $$
 DELIMITER ;
 
 
-
 --CALL insert_viewer('jdoe', 'securepassword', 'jdoe@example.com', 'John', 'Doe', '1990-01-01');
+
+/*******************************************************************
+************************* VIEW PUBLICATIONS ************************
+********************************************************************/
+
+DELIMITER $$
+
+CREATE OR REPLACE PROCEDURE get_general_events()
+BEGIN
+    SELECT publication.id, publication.name, publication.details
+    FROM publication
+    LEFT JOIN assistence ON publication.id = assistence.id_event
+    GROUP BY publication.id, publication.name, publication.details, publication.cupo, publication.date, publication.hour
+    HAVING COUNT(assistence.id_user) < publication.cupo
+    AND (publication.date < NOW() OR publication.hour <= CURTIME());
+END $$
+
+DELIMITER ;
+
+
+/*******************************************************************
+******************************* REPORTS *****************************
+********************************************************************/
+
+DELIMITER $$
+CREATE PROCEDURE add_report(
+    IN id_param INT, 
+    IN reason_param VARCHAR(13), 
+    IN details_param VARCHAR(200)
+)
+BEGIN
+    INSERT INTO report(id_publication, reason, details, status) 
+    VALUES (id_param, reason_param, details_param, 'PENDING');
+END $$
+DELIMITER ;
+
+
+
+--INSERT INTO report(id_publication, reason, details, status) VALUES (id_param, reason_param, details_param, 'PENDING')
