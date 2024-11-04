@@ -6,17 +6,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = isset($_POST['id']) ? $_POST['id'] : -1;
 
     if ($accion == 'details') {
-
-        //ir a otra pestana
+        header("Location: ../../../view/user_module/view-details-events.php?id=" . $id);
+        exit();
     } elseif ($accion == 'publicator') {
 
         //ir a otra pestana
     } elseif ($accion == 'report'){
-        header
-        ("Location: ../../../view/user_module/report-publication.php?id=" . $id);
+        header("Location: ../../../view/user_module/report-publication.php?id=" . $id);
         exit();
     } else {
-
         echo $accion;
         echo "Acción no válida.";
     }

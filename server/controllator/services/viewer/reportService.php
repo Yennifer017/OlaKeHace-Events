@@ -16,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $reportDB = new ReportDB();
         $report = new Report($id, '', $reason, $details);
         $reportDB->addReport($report, ConnectionDB::getInstance()->getConnection());
-        header("Location: $url?s=200");
+        header("Location: $url?id=$id&s=200");
         exit();
     } catch (Exception $e) {
         /*echo $id;
         echo $e;*/
-        header("Location: $url?s=400");
+        header("Location: $url?id=$id&s=400");
         exit();
     }
 

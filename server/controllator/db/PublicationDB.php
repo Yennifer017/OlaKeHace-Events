@@ -43,6 +43,21 @@
         return $publications;
     }
 
+    public function getOnePublication($id, $conn){
+        $id = (int) $id;
+        $sql = 'SELECT * FROM publication WHERE id = :id_publication;';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':id_publication', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return new Publication(
+            $result['id'], $result['region'], $result['place'], 
+            $result['date'], $result['hour'], $result['cupo'], 
+            $result['type_public'], $result['details'], $result['url'], 
+            $result['name']
+        );
+    }
+
     public function aprovePublication($id, $conn){
         $id = (int) $id;
         $sql = 'UPDATE publication SET aprobed = TRUE WHERE id = :id_publication';
