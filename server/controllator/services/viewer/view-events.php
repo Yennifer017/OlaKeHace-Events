@@ -3,7 +3,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 $eventsDB = new PublicationDB();
-$events = $eventsDB->getGeneralPublications(ConnectionDB::getInstance()->getConnection());
+$events = [];
+try {
+    $events = $eventsDB->getGeneralPublications(ConnectionDB::getInstance()->getConnection());
+} catch (Exception $th) {
+}
+
 ?>
 <?php foreach ($events as $event): ?>
     <div>

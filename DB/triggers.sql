@@ -1,3 +1,4 @@
+DELIMITER $$
 CREATE TRIGGER validate_cupos
 BEFORE INSERT ON assistence
 FOR EACH ROW
@@ -8,16 +9,14 @@ BEGIN
     SELECT publication.cupo INTO v_cupo FROM publication WHERE publication.id = NEW.id_event LIMIT 1;
     SELECT COUNT(*) INTO v_total_ocupados FROM assistence WHERE assistence.id_event = NEW.id_event;
     
-    IF v_total_ocupados < v_cupo THEN
-        
+    IF v_total_ocupados >= v_cupo THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No hay cupos disponibles para este evento';
     END IF;
-END;
+END $$
+DELIMITER ;
 
 
-
-
-
-INSERT INTO publication(
+/*INSERT INTO publication(
     region,
     place,
     id_publicator,
@@ -49,4 +48,4 @@ FROM publication
 LEFT JOIN assistence ON publication.id = assistence.id_event
     GROUP BY publication.id, publication.name, publication.details, publication.cupo, publication.date, publication.hour
     HAVING COUNT(assistence.id_user) < publication.cupo
-AND (publication.date < NOW() OR publication.hour <= CURTIME());
+AND (publication.date < NOW() OR publication.hour <= CURTIME());*/

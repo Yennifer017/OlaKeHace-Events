@@ -6,6 +6,28 @@
         $this->valitator = new UserValitator();
     }
 
+    public function recoveryCredentials(User $user, $conn){
+        $sql = 'SELECT * FROM user WHERE username = :username AND password = :pass LIMIT 1;';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':username', $user->getUsername());
+        $stmt->bindValue(':pass', $user->getPassword());
+        $stmt->execute();
+
+        // Recupera los datos como un arreglo asociativo
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result) {
+            if($result['active'] != 1 ){
+                throw new InvalidCredentialsEx();
+            }
+            $user->setRol($result['rol']);
+            $user->setId($result['id']);
+            $user->setPassword('Nothing here');
+            return $user;
+        } else {
+            throw new InvalidCredentialsEx();
+        }
+    }
+
     public function createPublicator(Publicator $publicator, $conn){
         if($this->valitator->validatePublicator($publicator)){
             $sql = 'CALL insert_publicator(:username, :password, :email, :firstname, :lastname);';

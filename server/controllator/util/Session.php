@@ -36,17 +36,9 @@ class Session {
             $data = openssl_decrypt($encrypted, $method, $key, 0, $iv); // Descifrar los datos
             try {
                 $array = explode(Session::SEPARATOR, $data);
-                
-                switch (count($array)) {
-                    case 3:
-                        return new Worker(null, null, $array[0], $array[1]);
-                    case 4:
-                        return new Assigned(null, null, $array[0], $array[1], $array[2]);
-                    case 5:
-                        return new Salesperson(null, null, $array[0], $array[2], $array[3]);
-                    default:
-                        return null;
-                }
+
+                return new User($array[0], '', '', $array[1]);
+
             } catch (Exception $e) {
                 return null;
             }

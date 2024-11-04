@@ -14,7 +14,13 @@ class User {
     protected $email;
 
     public function __construct(
-        $id = -1, $username = '', $password = '', $rol = '', $firstname = '', $lastname = '', $email = ''
+        $id = -1, 
+        $username = '',
+         $password = '', 
+         $rol = '', 
+         $firstname = '', 
+         $lastname = '', 
+         $email = ''
     ) {
         $this->id = $id;
         $this->username = $username;

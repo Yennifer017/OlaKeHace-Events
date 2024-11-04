@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e  # Detener el script si un comando falla
+#set -e  # Detener el script si un comando falla
 
 username='teo'
 password='i-am-root'
@@ -10,3 +10,4 @@ mysql -u $username -p$password -e "CREATE DATABASE $dbName;"
 mysql -u $username -p$password $dbName < db-creation.sql
 mysql -u $username -p$password $dbName < functions.sql
 mysql -u $username -p$password $dbName < triggers.sql
+mysql -u $username -p$password $dbName < initial-data.sql
