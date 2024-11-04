@@ -1,0 +1,53 @@
+.userDisplay {
+    background-color: var(--color-background);
+    padding: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: var(--third);
+    border-width: 10px;
+    width: 500px;
+    margin: 20px auto;
+    color: var(--color-text-secondary);
+    font-family: Arial, sans-serif;
+}
+
+.userDisplay h3 {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 0;
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: 5px;
+}
+
+.userDisplay p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.userDisplay h3 span,
+.userDisplay p {
+    color: var(--color-text-secondary);
+}
+
+.userDisplay strong {
+    color: var(--primary);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .userDisplay {
+        width: 90%;
+        padding: 15px;
+        border-width: 5px;
+    }
+    
+    .userDisplay h3 {
+        font-size: 1rem;
+    }
+    
+    .userDisplay p {
+        font-size: 0.9rem;
+    }
+}
