@@ -17,6 +17,7 @@ include "../../controllator/db/EventDB.php"
     <link rel="stylesheet" href="../../assets/css/userStyles.css">
 </head>
 <body>
+    <?php include "./header.php"?>
     <h1>Asistentes al evento</h1>
     <?php include "../../controllator/services/publicator/viewAssistants.php" ?>
     <?php include "../general/footer.php" ?>

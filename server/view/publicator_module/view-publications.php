@@ -15,6 +15,7 @@ include "../../model/instances/User.php";
     <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
+    <?php include "./header.php"?>
     <h1>Publicaciones de eventos</h1>
     <?php include "../../controllator/services/publicator/viewPublications.php" ?>
     <?php include "../general/footer.php" ?>
