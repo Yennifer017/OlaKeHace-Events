@@ -15,10 +15,10 @@
         $status = $_GET['s'];
         switch ($status) {
             case 400:
-                echo "<p>No se creo correctamente el registro de reporte</p>";
+                echo '<div class="error"><p>No se creo correctamente el registro de reporte</p></div>';
                 break;
             default:
-                echo "<p>Se reporto correctamente.</p>";
+                echo '<div class="success"><p>Se reporto correctamente.</p></div>';
                 break;
         }
     }

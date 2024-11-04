@@ -61,9 +61,10 @@ BEGIN
     SELECT publication.id, publication.name, publication.details
     FROM publication
     LEFT JOIN assistence ON publication.id = assistence.id_event
-    GROUP BY publication.id, publication.name, publication.details, publication.cupo, publication.date, publication.hour
-    HAVING COUNT(assistence.id_user) < publication.cupo
-    AND (publication.date < NOW() OR publication.hour <= CURTIME());
+    WHERE publication.date > CURDATE()
+    OR (publication.date = CURDATE() AND publication.hour > CURTIME())
+    GROUP BY publication.id, publication.name, publication.details, publication.cupo
+    HAVING COUNT(assistence.id_user) < publication.cupo;
 END $$
 
 DELIMITER ;

@@ -22,6 +22,37 @@
         }
     }
 
+    public function getPendingAprovedPublicactions($conn){
+        $publications = [];
+        $sql = "SELECT * FROM publication WHERE publication.aprobed = false";
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC); // Recuperar todas las filas
+
+        if ($results) {
+            foreach ($results as $result) {
+                $event = new Publication();
+                $event->setId($result['id']);
+                $event->setName($result['name']);
+                $event->setDetails($result['details']);
+                $publications[] = $event;
+            }
+            return $publications;
+        } 
+        return $publications;
+    }
+
+    public function aprovePublication($id, $conn){
+        $id = (int) $id;
+        $sql = 'UPDATE publication SET aprobed = TRUE WHERE id = :id_publication';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':id_publication', $id, PDO::PARAM_INT);
+        if ( !($stmt->execute()) ) {
+            throw new NoUpdateEx();
+        }
+    }
+
     public function addPublication(Publication $publication, $conn, $idPublicator){
         $sql = "INSERT INTO publication(
                 region,
