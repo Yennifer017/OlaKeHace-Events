@@ -1,3 +1,6 @@
+<?php
+    include "../../model/constants/PublicationConst.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +12,25 @@
 </head>
 
 <body>
+    <?php include "./header.php";?>
     <h1>Agregar publicación</h1>
 
-    <form action="registrar.php" method="post">
+    <?php
+        if (isset($_GET['e'])) {
+            $status = $_GET['e'];
+            switch ($status) {
+                case 400:
+                    echo '<div class="error"><p>No se ingreso la publicacion, intentalo de nuevo</p></div>';
+                    break;
+                case 200:
+                    echo '<div class="success"><p>Publicacion creada correctamente</p></div>';
+                    break;
+            }
+        }
+    ?>
+
+    <form action="../../controllator/services/publicator/createPublication.php" method="post">
+
 
         <label for="name">Nombre del evento:</label>
         <input type="text" name="name" id="name" required>
@@ -20,11 +39,11 @@
 
         <h2>Ubicación del evento</h2>
         <label for="region">Region:</label>
-        <input type="region" id="region" name="region" required>
+        <input type="text" id="region" name="region" required>
         <br><br>
 
         <label for="place">Lugar:</label>
-        <input type="place" id="place" name="place" required>
+        <input type="text" id="place" name="place" required>
         <br><br>
 
         <label for="dateInit">Fecha de inicio:</label>
@@ -32,7 +51,7 @@
         <br><br>
 
         <label for="hourInit">Hora de inicio:</label>
-        <input type="hour" id="hourInit" name="hourInit" required>
+        <input type="time" id="hourInit" name="hourInit" required>
 
         <hr>
         
@@ -62,6 +81,7 @@
         <input type="submit" value="Registrar evento">
 
     </form>
+    <?php include "../general/footer.php"; ?>
 </body>
 
 </html>

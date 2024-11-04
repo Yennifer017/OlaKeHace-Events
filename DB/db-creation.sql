@@ -51,7 +51,7 @@ CREATE TABLE publication(
     cupo INTEGER NOT NULL CHECK (cupo > 0),
     type_public ENUM('CHILDREN', 'TEEN', 'YOUNG_ADULT','ADULT','OLDS') NOT NULL,
     details VARCHAR(150) NOT NULL,
-    url VARCHAR(60),
+    url VARCHAR(180),
     name VARCHAR(25) NOT NULL,
     aprobed BOOLEAN NOT NULL DEFAULT FALSE,
     banned BOOLEAN NOT NULL DEFAULT FALSE,

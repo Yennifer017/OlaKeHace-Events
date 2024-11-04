@@ -14,10 +14,7 @@
 
     <h1>Ingresar</h1>
 
-    <!-- form action="../../controllator/services/general/loginService.php" method="POST" -->
-    <form action="../../controllator/services/general/loginService.php" method="POST">
-
-        <?php
+    <?php
         if (isset($_GET['e'])) {
             $status = $_GET['e'];
             switch ($status) {
@@ -32,7 +29,10 @@
                     break;
             }
         }
-        ?>
+    ?>
+
+    <!-- form action="../../controllator/services/general/loginService.php" method="POST" -->
+    <form action="../../controllator/services/general/loginService.php" method="POST">
         
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>

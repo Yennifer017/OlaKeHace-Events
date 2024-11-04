@@ -5,6 +5,14 @@ class Session {
     private const SEPARATOR = ',';
     public const USERNAME_COOKIE_NAME = "username";
 
+    public function removeSessionCookie(){
+        setcookie(
+            Session::SESSION_COOKIE_NAME, 
+            '', time() - 3600, '/'
+        );
+
+    }
+
     public function setSessionCookie(User $user){
         $random = rand(0, 10000);
         $cookie = $user->getId() . Session::SEPARATOR . $user->getRol() . Session::SEPARATOR . $random;
